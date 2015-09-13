@@ -1,4 +1,7 @@
 <?php
+
+require_once( DIR_SYSTEM . 'library/payssionurl.php');
+
 class ControllerPaymentPayssion extends Controller {
 	private $error = array();
 	
@@ -40,14 +43,12 @@ class ControllerPaymentPayssion extends Controller {
 		$this->data['text_all_zones'] = $this->language->get('text_all_zones');
 		$this->data['text_yes'] = $this->language->get('text_yes');
 		$this->data['text_no'] = $this->language->get('text_no');
-		$this->data['text_successful'] = $this->language->get('text_successful');
-		$this->data['text_declined'] = $this->language->get('text_declined');
-		$this->data['text_off'] = $this->language->get('text_off');
+		$this->data['text_testmode_on'] = $this->language->get('text_testmode_on');
+		$this->data['text_testmode_off'] = $this->language->get('text_testmode_off');
 
 		$this->data['entry_apikey'] = $this->language->get('entry_apikey');
 		$this->data['entry_secretkey'] = $this->language->get('entry_secretkey');
 		$this->data['entry_test'] = $this->language->get('entry_test');
-		$this->data['entry_total'] = $this->language->get('entry_total');
 		$this->data['entry_order_status'] = $this->language->get('entry_order_status');
 		$this->data['entry_pending_status'] = $this->language->get('entry_pending_status');
 		$this->data['entry_canceled_status'] = $this->language->get('entry_canceled_status');
@@ -56,8 +57,6 @@ class ControllerPaymentPayssion extends Controller {
 		$this->data['entry_geo_zone'] = $this->language->get('entry_geo_zone');
 		$this->data['entry_status'] = $this->language->get('entry_status');
 		$this->data['entry_sort_order'] = $this->language->get('entry_sort_order');
-
-		$this->data['help_total'] = $this->language->get('help_total');
 
 		$this->data['button_save'] = $this->language->get('button_save');
 		$this->data['button_cancel'] = $this->language->get('button_cancel');
@@ -99,6 +98,7 @@ class ControllerPaymentPayssion extends Controller {
 				'href'      => $this->url->link('payment/', 'token=' . $this->session->data['token'], 'SSL'),
 				'separator' => ' :: '
 		);
+		$this->data['breadcrumbs'] = $this->document->breadcrumbs;
 
 		$this->data['action'] = $this->url->link('payment/' . $id, 'token=' . $this->session->data['token'], 'SSL');
 
@@ -120,12 +120,6 @@ class ControllerPaymentPayssion extends Controller {
 			$this->data['payssion_test'] = $this->request->post['payssion_test'];
 		} else {
 			$this->data['payssion_test'] = $this->config->get('payssion_test');
-		}
-
-		if (isset($this->request->post['payssion_total'])) {
-			$this->data['payssion_total'] = $this->request->post['payssion_total'];
-		} else {
-			$this->data['payssion_total'] = $this->config->get('payssion_total');
 		}
 
 		if (isset($this->request->post['payssion_order_status_id'])) {
@@ -193,7 +187,7 @@ class ControllerPaymentPayssion extends Controller {
 				'common/footer'
 		);
 		
-		$this->response->setOutput($this->render());
+		$this->response->setOutput($this->render(TRUE), $this->config->get('config_compression'));
 	}
 
 	protected function validate() {

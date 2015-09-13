@@ -1,4 +1,6 @@
 <?php
+require_once( DIR_SYSTEM . 'library/payssionurl.php');
+
 class ControllerPaymentPayssion extends Controller {
 	protected $pm_id = '';
 	
@@ -23,8 +25,8 @@ class ControllerPaymentPayssion extends Controller {
 		$this->data['pm_id'] = $this->pm_id;
 		$this->data['api_key'] = $this->config->get('payssion_apikey');
 		$this->data['track_id'] = $order_info['order_id'];
-		$this->data['amount'] = $this->currency->format($order_info['total'], $order_info['currency_code'], $order_info['currency_value'], false);
-		$this->data['currency'] = $order_info['currency_code'];
+		$this->data['amount'] = $this->currency->format($order_info['total'], $order_info['currency'], $order_info['value'], false);
+		$this->data['currency'] = $order_info['currency'];
 		$this->data['description'] = $this->config->get('config_name') . ' - #' . $order_info['order_id'];
 		$this->data['payer_name'] = $order_info['payment_firstname'] . ' ' . $order_info['payment_lastname'];
 
@@ -44,6 +46,9 @@ class ControllerPaymentPayssion extends Controller {
 		$this->data['redirect_url'] = $this->url->link('payment/payssion/callback');
 
 		$this->data['api_sig'] = $this->generateSignature($this->data, $this->config->get('payssion_secretkey'));
+		
+		$this->id = 'payment';
+		
 		if (file_exists(DIR_TEMPLATE . $this->config->get('config_template') . '/template/payment/payssion.tpl')) {
 			$this->template = $this->config->get('config_template') . '/template/payment/payssion.tpl';
 		} else {

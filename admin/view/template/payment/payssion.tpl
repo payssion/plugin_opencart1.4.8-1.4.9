@@ -39,27 +39,16 @@
             <td>
               <select name="payssion_test" id="input-test">
                 <?php if ($payssion_test == '0') { ?>
-                <option value="0" selected="selected"><?php echo $text_off; ?></option>
+                <option value="0" selected="selected"><?php echo $text_testmode_off; ?></option>
                 <?php } else { ?>
-                <option value="0"><?php echo $text_off; ?></option>
+                <option value="0"><?php echo $text_testmode_off; ?></option>
                 <?php } ?>
                 <?php if ($payssion_test == '100') { ?>
-                <option value="100" selected="selected"><?php echo $text_successful; ?></option>
+                <option value="100" selected="selected"><?php echo $text_testmode_on; ?></option>
                 <?php } else { ?>
-                <option value="100"><?php echo $text_successful; ?></option>
-                <?php } ?>
-                <?php if ($payssion_test == '101') { ?>
-                <option value="101" selected="selected"><?php echo $text_declined; ?></option>
-                <?php } else { ?>
-                <option value="101"><?php echo $text_declined; ?></option>
+                <option value="100"><?php echo $text_testmode_on; ?></option>
                 <?php } ?>
               </select>
-            </td>
-          </tr>
-          <tr>
-            <td><span data-toggle="tooltip" title="<?php echo $help_total; ?>"><?php echo $entry_total; ?></span></td>
-            <td>
-              <input type="text" name="payssion_total" value="<?php echo $payssion_total; ?>" placeholder="<?php echo $entry_total; ?>" id="input-total" />
             </td>
           </tr>
           <tr>
