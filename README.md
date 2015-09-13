@@ -5,7 +5,7 @@ Payssion opencart extension
 
 <h4>Installation</h4>
 
-Copy over _<b>admin</b>_, _<b>catalog</b>_ folders to your Opencart root.
+Copy over _<b>admin</b>_, _<b>catalog</b>_ and _<b>system</b>_ folders to your Opencart root.
 
 <h4>Setup</h4>
 
