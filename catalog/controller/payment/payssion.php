@@ -42,9 +42,9 @@ class ControllerPaymentPayssion extends Controller {
 		$this->data['payer_email'] = $order_info['email'];
 		
 		$this->data['notify_url'] = $this->url->link('payment/payssion/notify');
-		$this->data['success_url'] = $this->url->link('payment/payssion/callback');
-		$this->data['redirect_url'] = $this->url->link('payment/payssion/callback');
-
+		$this->data['success_url'] = $this->url->link('checkout/success');
+		$this->data['redirect_url'] = $this->url->link('checkout/payment');
+		
 		$this->data['api_sig'] = $this->generateSignature($this->data, $this->config->get('payssion_secretkey'));
 		
 		$this->id = 'payment';
