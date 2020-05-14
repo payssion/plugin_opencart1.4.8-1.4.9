@@ -36,6 +36,7 @@ $_['text_title_paysbuyth']		= 'Paysbuy';
 $_['text_title_molpay']		= 'MOLPay';
 $_['text_title_bankcardtr']		= 'Turkish Credit/Bank Card';
 $_['text_title_fawryeg']		= 'Fawry';
+$_['text_title_bitcoin']		= 'Bitcoin';
 
 $_['text_response']				= '';
 $_['text_success']				= '... your payment was successfully received.';
