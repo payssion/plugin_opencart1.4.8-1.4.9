@@ -38,6 +38,7 @@ $_['text_title_bankcardtr']		= 'Turkish Credit/Bank Card';
 $_['text_title_fawryeg']		= 'Fawry';
 $_['text_title_bitcoin']		= 'Bitcoin';
 $_['text_title_dotpaypl']		= 'Dotpay';
+$_['text_title_amanpayma']		= 'Amanpay';
 
 $_['text_response']				= '';
 $_['text_success']				= '... your payment was successfully received.';
